@@ -1,0 +1,61 @@
+#!/usr/bin/env node
+// -*- js -*-
+
+var fs = require('fs');
+var path = require('path');
+var exec = require('child_process').exec;
+var uglify = require("uglify-js") // symlink ~/.node_libraries/uglify-js.js to ../uglify-js.js
+    ,parser = uglify.parse
+    ,minify = uglify.minify;
+
+//http://lisperator.net/uglifyjs/compress
+//ascii: https://github.com/mishoo/UglifyJS2/issues/54
+var compress = {}
+
+var args = process.argv.slice(2)
+var warnings = false
+if (args.length > 1) {
+    //console.log(args)
+    var indir = fullPath(args[0])
+    var outdir = fullPath(args[1])
+    var filter = []
+    if (args[2]) {
+        if (args[2] == '-warn') {
+            warnings = true
+        } else {
+            filter = args[2].split('=')[1].split(',')
+        }
+    }
+    if (args[3] == '-warn') {
+        warnings = true
+    }
+    fs.readdir(args[0], function(err, files){
+        if (err) throw err;
+        for (var i = 0; i < files.length; ++i) {
+            var file = files[i]
+            var extname = path.extname(file);
+            if (path.extname(file) == '.js' || path.extname(file) == '.json' ) {
+                //console.log(indir, file, filter)
+                if (filter.indexOf(indir + file) == -1) {
+                    var result = uglify.minify(indir + file, {warnings: warnings});
+                    fs.writeFileSync(outdir + file, result.code)
+                } else {
+                    exec( 'cp ' + indir + file + ' ' + outdir + file, function(err){
+                        if (err) throw err;
+                    })
+                }
+            }
+        }
+        console.log('Compress [./' + indir + '] to [./' + outdir + '] 			\033[32m✔\033[39m Done')
+    })
+} else {
+    console.log('   Usage: ugdir in-dir/path out-dir/path [filter=a.js,b.js]')
+}
+
+function fullPath(path) {
+    if (path.slice(-1) != '/') {
+        path = path + '/'
+    } 
+    return path
+}
+
