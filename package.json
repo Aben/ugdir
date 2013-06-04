@@ -1,10 +1,10 @@
 {
   "name": "ugdir",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This shell script for compress each js file of a directory, and output another dircetory.",
-  "dependencies": {
-    "uglify-js": "~2.3.0"
-  },
+  //"dependencies": {
+    //"uglify-js": "~2.3.0"
+  //},
   "bin": {
     "ugdir": "./ugdir"
   },

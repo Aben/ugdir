@@ -13,6 +13,8 @@ The `filter` js file will copy to the target directory, `-warn` will display war
 
 ###Installation
 	git clone git@github.com:Aben/ugdir.git
-	npm install
+	npm install uglify-js
 	npm link # maybe need sudo
+	
+###changelog
 
