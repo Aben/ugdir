@@ -5,9 +5,9 @@
   "devDependencies": {
     "uglify-js": "latest"
   },
-  "main": "./ugdir.js",
+  "main": "./ugdir",
   "bin": {
-    "ugdir.js": "./ugdir.js"
+    "ugdir": "./ugdir"
   },
   "repository": "git@github.com:Aben/ugdir.git",
   "author": "Aben",
