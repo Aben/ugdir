@@ -12,10 +12,7 @@ This shell script for compress each js file of a directory, and output another d
 The `filter` js file will copy to the target directory, `-warn` will display warnings when dropping unreachable code or unused declarations etc.
 
 ###Installation
-	git clone git@github.com:Aben/ugdir.git
-	npm install uglify-js -g
-	npm link
-	# maybe need sudo
+	npm install https://github.com/Aben/ugdir.git
 	
 ###changelog
 

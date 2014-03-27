@@ -1,17 +1,12 @@
 {
   "name": "ugdir",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This shell script for compress each js file of a directory, and output another dircetory.",
-  "devDependencies": {
-    "uglify-js": "latest"
-  },
-  "main": "./ugdir",
   "bin": {
-    "ugdir": "./ugdir"
+    "ugdir": "bin/ugdir"
   },
-  "repository": "git@github.com:Aben/ugdir.git",
+  "repository": "https://github.com/Aben/ugdir.git",
   "author": "Aben",
-  "readme": "This shell script for compress each js file of a directory, and output another dircetory.",
-  "_id": "ugdir@0.1.1",
+  "_id": "ugdir@0.1.2",
   "license": "Copyleft"
 }
